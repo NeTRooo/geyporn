@@ -9,7 +9,7 @@ cascPathface = os.path.dirname(cv2.__file__) + "/data/haarcascade_frontalface_al
 faceCascade = cv2.CascadeClassifier(cascPathface)
 # Загружаем мини-бд лиц
 data = pickle.loads(open('face_enc', "rb").read())
- 
+whois = []
 print("Streaming started")
 video_capture = cv2.VideoCapture(0)
 while True:
@@ -33,6 +33,8 @@ while True:
             for i in matchedIdxs:
                 name = data["names"][i]
                 counts[name] = counts.get(name, 0) + 1
+                if name not in whois:
+                    whois.append(name)
             name = max(counts, key=counts.get)
  
         names.append(name)
@@ -41,7 +43,9 @@ while True:
             cv2.putText(frame, name, (x, y), cv2.FONT_HERSHEY_SIMPLEX,
              0.75, (0, 255, 0), 2)
     cv2.imshow("Frame", frame)
+    print(whois)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
+
 video_capture.release()
 cv2.destroyAllWindows()

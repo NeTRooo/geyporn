@@ -13,13 +13,19 @@ while True:
     faces = face_cascade_db.detectMultiScale(img_gray, 1.1,  19)
     for (x,y,w,h) in faces:
         cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2)
+        cv2.putText(img,"face", (x, y), cv2.FONT_HERSHEY_SIMPLEX,
+                    0.75, (0, 255, 0), 2)
         img_gray_face = img_gray[y:y+h,x:x+w]
         eyes = eye_cascade.detectMultiScale(img_gray_face, 1.1, 19)
         for (ex, ey, ew, eh) in eyes:
             cv2.rectangle(img, (x+ex,y+ey), (x+ex+ew,y+ey+eh), (255,0,0), 2)
+            cv2.putText(img, "eyes", (x+ex, y+ey), cv2.FONT_HERSHEY_SIMPLEX,
+                        0.75, (0, 255, 0), 2)
         smile = smile_cascade.detectMultiScale(img_gray_face, 1.1, 19)
-        for (sx, sy, sw, sh) in smile:
-            cv2.rectangle(img, (x+sx,y+sy), (x+sx+sw,y+sy+sh), (0,0,255), 2)
+        #for (sx, sy, sw, sh) in smile:
+         #   cv2.rectangle(img, (x+sx,y+sy), (x+sx+sw,y+sy+sh), (0,0,255), 2)
+          #  cv2.putText(img, "mouth", (x+sx, y + sy), cv2.FONT_HERSHEY_SIMPLEX,
+           #             0.75, (0, 255, 0), 2)
     cv2.imshow('rez', img)
     if cv2.waitKey(1) & 0xff == ord('q'):
         break
