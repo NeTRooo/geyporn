@@ -26,8 +26,8 @@ densss_face_encoding = face_recognition.face_encodings(densss_image)[0]
 vlad_image = face_recognition.load_image_file("vlad.png")
 vlad_face_encoding = face_recognition.face_encodings(vlad_image)[0]
 
-# iux_image = face_recognition.load_image_file("iux.jpg")
-# iux_face_encoding = face_recognition.face_encodings(iux_image)[0]
+dim04ka_image = face_recognition.load_image_file("dim04ka.png")
+dim04ka_face_encoding = face_recognition.face_encodings(dim04ka_image)[0]
 
 brat_tamika_image = face_recognition.load_image_file("brat_tamika.png")
 brat_tamika_face_encoding = face_recognition.face_encodings(brat_tamika_image)[0]
@@ -48,7 +48,7 @@ known_face_encodings = [
     biden_face_encoding,
     densss_face_encoding,
     vlad_face_encoding,
-    # iux_face_encoding,
+    dim04ka_face_encoding,
     brat_tamika_face_encoding,
     kris_face_encoding,
     alina_face_encoding
@@ -58,7 +58,7 @@ known_face_names = [
     "Joe Biden",
     "Dimo4ka",
     "Vlad kakawka",
-    # "Xui iuX",
+    "dim04ka",
     "Brat Tamika",
     "Kris",
     "alina"
